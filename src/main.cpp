@@ -1,6 +1,7 @@
 #include "../include/address_book.h"
 #include <iostream>
 
-void main() {
+int main() {
   std::cout << "Enter contact: ";
+  return 0;
 }
