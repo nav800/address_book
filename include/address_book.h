@@ -6,16 +6,25 @@
 class Contact{
   std::string _name;
   std::string _email;
-  int _number;
+  size_t _number;
 };
 
 class AddressBook{
   class Iterator{
-    int _index;
+    size_t _index;
   };
-int size;
+size_t capacity;
+size_t _size;
 Contact* _contacts;
-
+public:
+  AddressBook::AddressBook(){
+    _capacity = 0;
+    _size = 0;
+    _contacts = new Contact[_capacity];
+  }
+  void push_back(const Contact& cont) {
+    _data[_size++] = cont;
+  }
 };
 
 #endif
