@@ -17,7 +17,7 @@ size_t _capacity;
 size_t _size;
 Contact* _contacts;
 public:
-  AddressBook::AddressBook(){
+  AddressBook(){
     _capacity = 0;
     _size = 0;
     _contacts = new Contact[_capacity];
