@@ -2,60 +2,25 @@
 #define addressBook_H
 
 #include <string>
+#include <vector>
 
 class Contact{
-  std::string _name;
-  std::string _email;
-  size_t _number;
+  std::string name;
+  int number;
+  std::string email;
 
   public:
-    Contact(std::string name, size_t number, std::string email){
-      _name = name;
-      _number = number;
-      _email = email;
-    }
+  Contact(const std::string& name = "Name empty", const size_t number = -8, const std::string& email = "No email given") : name(name), number(number), email(email) {}
+
+  bool empty(){
+    return (name == "Name empty" && number == -8 && email == "No email given");
+  }
 };
 
 class AddressBook{
-  class Iterator{
-    size_t _index;
-  };
-  size_t _capacity;
-  size_t _size;
-  Contact* _contacts;
+  std::vector<Contact> _contacts;
   
   public:
-    AddressBook(){
-      _capacity = 0;
-      _size = 0;
-      _contacts = new Contact[_capacity];
-    }
-    AddressBook(size_t length){
-      _capacity = length;
-      _size = 0;
-      _contacts = new Contact[_capacity];
-    }
-    void push_back(const Contact& value) {
-        if (_size >= _capacity) {
-            if (1>(_capacity*2)){
-                resize(1);
-            }
-            resize(_capacity*2);
-        }
-        _contacts[_size++] = value;
-    }
-    void resize(size_t new_capacity) {
-        if (new_capacity == _capacity){
-            return;
-        }
-        Contact* newCont = new Contact[new_capacity];
-        for (size_t i = 0; i < _size; ++i) {
-            newCont[i] = std::move(_contacts[i]);
-        }
-        delete[] _contacts;
-        _contacts = newCont;
-        _capacity = new_capacity;
-    }
+    AddressBook() {}
 };
-
 #endif

@@ -1,0 +1,5 @@
+---
+triple:          'arm64-apple-darwin'
+binary-path:     '/Users/abhinavnair/Desktop/address_book/src/main'
+relocations:     []
+...
