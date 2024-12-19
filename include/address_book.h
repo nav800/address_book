@@ -22,6 +22,11 @@ public:
     _size = 0;
     _contacts = new Contact[_capacity];
   }
+  AddressBook(size_t length){
+    _capacity = length;
+    _size = 0;
+    _contacts = new Contact[_capacity];
+  }
   void push_back(const Contact& value) {
       if (_size >= _capacity) {
           if (1>(_capacity*2)){
