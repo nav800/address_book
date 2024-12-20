@@ -18,10 +18,27 @@ void main_menu(AddressBook b){
       std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
       std::cout << "Enter name: ";
       std::getline(std::cin, t_name);
+      if(t_name.empty()){
+        t_name = "Name empty";
+      }
       std::cout << "Enter number: ";
-      std::cin >> t_number;
+      while (true) {
+        std::cout << "Enter an integer: ";
+        std::cin >> t_number;
+
+        if (std::cin.fail()) {
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            std::cout << "Invalid input! Please enter an integer." << std::endl;
+        } else {
+            break; // Exit the loop if input is valid
+        }
+    }
       std::cout << "Enter email: ";
       std::cin >> t_email;
+      if(t_email.empty()){
+        t_email = "No email given";
+      }
       b.add_contact(t_name, t_number, t_email);
       std::cout << "Contact added!" << "\n" << std::endl;
     }
