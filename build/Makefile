@@ -129,6 +129,30 @@ address_book/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/address_book.dir/build.make CMakeFiles/address_book.dir/build
 .PHONY : address_book/fast
 
+src/ab_ui.o: src/ab_ui.cpp.o
+.PHONY : src/ab_ui.o
+
+# target to build an object file
+src/ab_ui.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/address_book.dir/build.make CMakeFiles/address_book.dir/src/ab_ui.cpp.o
+.PHONY : src/ab_ui.cpp.o
+
+src/ab_ui.i: src/ab_ui.cpp.i
+.PHONY : src/ab_ui.i
+
+# target to preprocess a source file
+src/ab_ui.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/address_book.dir/build.make CMakeFiles/address_book.dir/src/ab_ui.cpp.i
+.PHONY : src/ab_ui.cpp.i
+
+src/ab_ui.s: src/ab_ui.cpp.s
+.PHONY : src/ab_ui.s
+
+# target to generate assembly for a file
+src/ab_ui.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/address_book.dir/build.make CMakeFiles/address_book.dir/src/ab_ui.cpp.s
+.PHONY : src/ab_ui.cpp.s
+
 src/main.o: src/main.cpp.o
 .PHONY : src/main.o
 
@@ -162,6 +186,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... address_book"
+	@echo "... src/ab_ui.o"
+	@echo "... src/ab_ui.i"
+	@echo "... src/ab_ui.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"

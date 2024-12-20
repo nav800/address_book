@@ -81,12 +81,12 @@ clean: CMakeFiles/address_book.dir/clean
 CMakeFiles/address_book.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/address_book.dir/build.make CMakeFiles/address_book.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/address_book.dir/build.make CMakeFiles/address_book.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/abhinavnair/Desktop/address_book/build/CMakeFiles --progress-num=1,2 "Built target address_book"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/abhinavnair/Desktop/address_book/build/CMakeFiles --progress-num=1,2,3 "Built target address_book"
 .PHONY : CMakeFiles/address_book.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/address_book.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/abhinavnair/Desktop/address_book/build/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/abhinavnair/Desktop/address_book/build/CMakeFiles 3
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/address_book.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/abhinavnair/Desktop/address_book/build/CMakeFiles 0
 .PHONY : CMakeFiles/address_book.dir/rule

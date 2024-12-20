@@ -1,4 +1,6 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/address_book.dir/src/ab_ui.cpp.o"
+  "CMakeFiles/address_book.dir/src/ab_ui.cpp.o.d"
   "CMakeFiles/address_book.dir/src/main.cpp.o"
   "CMakeFiles/address_book.dir/src/main.cpp.o.d"
   "address_book"

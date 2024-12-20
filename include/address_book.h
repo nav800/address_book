@@ -27,15 +27,9 @@ class Contact{
       email = _email;
     }
   }
-  std::string Name(){
-    return name;
-  }
-  int Number(){
-    return number;
-  }
-  std::string Email(){
-    return email;
-  }
+  std::string Name(){ return name; }
+  int Number(){ return number; }
+  std::string Email(){ return email; }
 };
 
 class AddressBook{
@@ -53,13 +47,22 @@ class AddressBook{
     void display(Contact c){
       std::cout << "Name: " << c.Name() << ", Number: " << c.Number() << ", Email: " << c.Email() << std::endl;
     }
-    void display_all(){
-      for (Contact c: _contacts){
-        display(c);
+    void display_some(std::vector<Contact> _list){
+      if (_list.size() == 0){
+        std::cout << "No contacts to display" << std::endl;
       }
+      for (size_t i = 0; i < _list.size(); ++i){
+        display(_list[i]);
+      }
+    }
+    void display_all(){
+      display_some(_contacts);
     }
     void edit_index(int index, std::string name, int number, std::string email){
       _contacts[index].edit(name, number, email);
+    }
+    void delete_index(int index){
+      _contacts.erase(_contacts.begin()+index);
     }
 };
 #endif
