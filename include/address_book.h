@@ -7,7 +7,7 @@
 
 class Contact{
   std::string name;
-  int number;
+  long number;
   std::string email;
 
   public:
@@ -17,18 +17,12 @@ class Contact{
     return (name == "Name empty" && number == -8 && email == "No email given");
   }
   void edit(const std::string& _name = "Name empty", const size_t _number = -8, const std::string& _email = "No email given"){
-    if (_name != "Name empty"){
-      name = _name;
-    }
-    if (_number != -8){
-      number = _number;
-    }
-    if (_email != "No email given"){
-      email = _email;
-    }
+    name = _name;
+    number = _number;
+    email = _email;    
   }
   std::string Name(){ return name; }
-  int Number(){ return number; }
+  long Number(){ return number; }
   std::string Email(){ return email; }
 };
 
@@ -41,7 +35,7 @@ class AddressBook{
       return _contacts.size();
     }
     
-    void add_contact(std::string name, int number, std::string email){
+    void add_contact(std::string name, long number, std::string email){
       Contact temp = Contact(name, number, email);
       _contacts.push_back(temp);
     }
@@ -81,7 +75,7 @@ class AddressBook{
       }
       return _list;
     }
-    std::vector<int> search_m(int number){
+    std::vector<int> search_m(long number){
       std::vector<int> _list;
       for (size_t i = 0; i < _contacts.size(); ++i){
         if (_contacts[i].Number() == number){
@@ -90,7 +84,7 @@ class AddressBook{
       }
       return _list;
     }
-    std::vector<int> search_m(std::vector<int> list, int number){
+    std::vector<int> search_m(std::vector<int> list, long number){
       std::vector<int> _list;
       for (size_t i = 0; i < list.size(); ++i){
         if (_contacts[list[i]].Number() == number){
@@ -118,7 +112,7 @@ class AddressBook{
       return _list;
     }
 
-    void edit_index(int index, std::string name, int number, std::string email){
+    void edit_index(int index, std::string name, long number, std::string email){
       _contacts[index].edit(name, number, email);
     }
     void delete_index(int index){
