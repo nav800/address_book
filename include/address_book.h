@@ -2,7 +2,6 @@
 #define addressBook_H
 
 #include <string>
-#include <vector>
 #include <iostream>
 
 class Contact{
@@ -27,20 +26,38 @@ class Contact{
 };
 
 class AddressBook{
-  std::vector<Contact> _contacts;
+  int capacity, size;
+  Contact* _contacts;
   
   public:
-    AddressBook() {}
+    AddressBook(int _capacity = 10){
+      capacity = _capacity;
+      size = 0;
+      _contacts = new Contact[capacity];
+    }
     size_t size(){
-      return _contacts.size();
+      return size;
     }
     
     void add_contact(std::string name, long number, std::string email){
       Contact temp = Contact(name, number, email);
-      _contacts.push_back(temp);
+      push_back(temp);
     }
     void add_contact(Contact temp){
-      _contacts.push_back(temp);
+      push_back(temp);
+    }
+    void push_back(Contact temp){
+      if (size == capacity){
+        Contact* temp_contacts = new Contact[capacity*2];
+        for (size_t i = 0; i < size; ++i){
+          temp_contacts[i] = _contacts[i];
+        }
+        delete[] _contacts;
+        _contacts = temp_contacts;
+        capacity *= 2;
+      }
+      _contacts[size] = temp;
+      ++size;
     }
 
     void display(Contact c){
@@ -54,21 +71,15 @@ class AddressBook{
         display(_contacts[_list[i]]);
       }
     }
-    void display_some(std::vector<Contact> _list){
-      if (_list.size() == 0){
-        std::cout << "No contacts to display" << std::endl;
-      }
-      for (size_t i = 0; i < _list.size(); ++i){
-        display(_list[i]);
-      }
-    }
     void display_all(){
-      display_some(_contacts);
+      for(size_t i = 0; i < size; ++i){
+        display(_contacts[i]);
+      }
     }
 
     std::vector<int> search_n(std::string name){
       std::vector<int> _list;
-      for (size_t i = 0; i < _contacts.size(); ++i){
+      for (size_t i = 0; i < size; ++i){
         if (_contacts[i].Name() == name){
           _list.push_back(i);
         }
@@ -77,7 +88,7 @@ class AddressBook{
     }
     std::vector<int> search_m(long number){
       std::vector<int> _list;
-      for (size_t i = 0; i < _contacts.size(); ++i){
+      for (size_t i = 0; i < size; ++i){
         if (_contacts[i].Number() == number){
           _list.push_back(i);
         }
@@ -95,7 +106,7 @@ class AddressBook{
     }
     std::vector<int> search_e(std::string email){
       std::vector<int> _list;
-      for (size_t i = 0; i < _contacts.size(); ++i){
+      for (size_t i = 0; i < size; ++i){
         if (_contacts[i].Email() == email){
           _list.push_back(i);
         }
@@ -116,7 +127,10 @@ class AddressBook{
       _contacts[index].edit(name, number, email);
     }
     void delete_index(int index){
-      _contacts.erase(_contacts.begin()+index);
+      for (size_t i = index; i < size-1; ++i){
+        _contacts[i] = _contacts[i+1];
+      }
+      --size;
     }
 };
 #endif
