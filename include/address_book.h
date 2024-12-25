@@ -26,17 +26,18 @@ class Contact{
 };
 
 class AddressBook{
-  int capacity, size;
+  int capacity;
+  size_t _size;
   Contact* _contacts;
   
   public:
     AddressBook(int _capacity = 10){
       capacity = _capacity;
-      size = 0;
+      _size = 0;
       _contacts = new Contact[capacity];
     }
-    size_t size(){
-      return size;
+    int size(){
+      return _size;
     }
     
     void add_contact(std::string name, long number, std::string email){
@@ -47,17 +48,17 @@ class AddressBook{
       push_back(temp);
     }
     void push_back(Contact temp){
-      if (size == capacity){
+      if (_size == capacity){
         Contact* temp_contacts = new Contact[capacity*2];
-        for (size_t i = 0; i < size; ++i){
+        for (size_t i = 0; i < _size; ++i){
           temp_contacts[i] = _contacts[i];
         }
         delete[] _contacts;
         _contacts = temp_contacts;
         capacity *= 2;
       }
-      _contacts[size] = temp;
-      ++size;
+      _contacts[_size] = temp;
+      ++_size;
     }
 
     void display(Contact c){
@@ -72,14 +73,14 @@ class AddressBook{
       }
     }
     void display_all(){
-      for(size_t i = 0; i < size; ++i){
+      for(size_t i = 0; i < _size; ++i){
         display(_contacts[i]);
       }
     }
 
     std::vector<int> search_n(std::string name){
       std::vector<int> _list;
-      for (size_t i = 0; i < size; ++i){
+      for (size_t i = 0; i < _size; ++i){
         if (_contacts[i].Name() == name){
           _list.push_back(i);
         }
@@ -88,7 +89,7 @@ class AddressBook{
     }
     std::vector<int> search_m(long number){
       std::vector<int> _list;
-      for (size_t i = 0; i < size; ++i){
+      for (size_t i = 0; i < _size; ++i){
         if (_contacts[i].Number() == number){
           _list.push_back(i);
         }
@@ -106,7 +107,7 @@ class AddressBook{
     }
     std::vector<int> search_e(std::string email){
       std::vector<int> _list;
-      for (size_t i = 0; i < size; ++i){
+      for (size_t i = 0; i < _size; ++i){
         if (_contacts[i].Email() == email){
           _list.push_back(i);
         }
@@ -127,10 +128,10 @@ class AddressBook{
       _contacts[index].edit(name, number, email);
     }
     void delete_index(int index){
-      for (size_t i = index; i < size-1; ++i){
+      for (size_t i = index; i < _size-1; ++i){
         _contacts[i] = _contacts[i+1];
       }
-      --size;
+      --_size;
     }
 };
 #endif
